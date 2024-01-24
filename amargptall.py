@@ -159,13 +159,17 @@ if selected == 'CHAT HISTORY':
                 ('img_history', "Image Chat History:", "👤"),
                 ('img_srchistory', "Image Source", "👤"),
             ]:
-                if history := st.session_state.get(history_type):
+                history = st.session_state.get(history_type, [])
+                error_message = f"{header_text} is empty. Start asking questions with images to build the history." if "Chat" in header_text else f"{header_text} is empty. Start uploading images to build the history."
+
+                if history:
                     st.subheader(header_text)
                     for role, text in history:
                         role_prefix = emoji if role in ["YOU", "SOURCE"] else "🤖"
-                        st.markdown(f"**{role} {role_prefix}**: {text} ")
+                        st.markdown(f"**{role} {role_prefix}**: {text}")
                 else:
-                    st.error(f"{header_text} is empty. Start asking questions with images to build the history." if "Chat" in header_text else f"{header_text} is empty. Start uploading images to build the history.")
+                    st.error(error_message)
+
 
         
     with pdf_history_button:
@@ -204,13 +208,14 @@ if selected == "IMAGE CHAT":
 
     if option == "Upload Image":
         uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-    if uploaded_file:
-        try:
-            image = Image.open(uploaded_file)
-            st.image(image, caption='Uploaded Image', use_column_width=True)
-            st.session_state['img_srchistory'].append(("SOURCE", option))
-        except Exception as e:
-            st.error(f"Error loading uploaded image: {str(e)}")
+        if uploaded_file:
+            try:
+                image = Image.open(uploaded_file)
+                st.image(image, caption='Uploaded Image', use_column_width=True)
+                st.session_state['img_srchistory'].append(("SOURCE", option))
+            except Exception as e:
+              st.error(f"Error loading uploaded image: {str(e)}")
+
 
     elif option == "Provide Image URL":
          image_url = st.text_input("Enter Image URL:")
@@ -220,7 +225,7 @@ if selected == "IMAGE CHAT":
                  if response.status_code == 200:
                      image = Image.open(BytesIO(response.content))
                      st.image(image, caption='Image from URL', use_column_width=True)
-                     st.session_state['img_history'].append(("SOURCE", option))
+                     st.session_state['img_srchistory'].append(("SOURCE", option))
                  else:
                      st.error(f"Failed to retrieve image from URL. Status code: {response.status_code}")
              except Exception as e:
