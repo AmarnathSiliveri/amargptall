@@ -203,28 +203,29 @@ if selected == "IMAGE CHAT":
     option = st.radio("Choose an option", ["Upload Image", "Provide Image URL"])
 
     if option == "Upload Image":
-        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-        if uploaded_file:
-            try:
-                image = Image.open(uploaded_file)
-                st.image(image, caption='Uploaded Image', use_column_width=True)
-                st.session_state['img_srchistory'].append(("SOURCE", option))
-            except Exception as e:
-                st.error(f"Error loading uploaded image: {str(e)}")
+    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+    if uploaded_file:
+        try:
+            image = Image.open(uploaded_file)
+            st.image(image, caption='Uploaded Image', use_column_width=True)
+            st.session_state['img_srchistory'].append(("SOURCE", option))
+        except Exception as e:
+            st.error(f"Error loading uploaded image: {str(e)}")
 
     elif option == "Provide Image URL":
-        image_url = st.text_input("Enter Image URL:")
-        if image_url:
-            try:
-                response = requests.get(image_url)
-                if response.status_code == 200:
-                    image = Image.open(BytesIO(response.content))
-                    st.image(image, caption='Image from URL', use_column_width=True)
-                    st.session_state['img_history'].append(("SOURCE", option))
-                else:
-                    st.error(f"Failed to retrieve image from URL. Status code: {response.status_code}")
-            except Exception as e:
-                st.error(f"Error loading image from URL: {str(e)}")
+         image_url = st.text_input("Enter Image URL:")
+         if image_url:
+             try:
+                 response = requests.get(image_url)
+                 if response.status_code == 200:
+                     image = Image.open(BytesIO(response.content))
+                     st.image(image, caption='Image from URL', use_column_width=True)
+                     st.session_state['img_history'].append(("SOURCE", option))
+                 else:
+                     st.error(f"Failed to retrieve image from URL. Status code: {response.status_code}")
+             except Exception as e:
+                 st.error(f"Error loading image from URL: {str(e)}")
+
 
 
                 
