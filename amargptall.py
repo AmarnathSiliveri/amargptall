@@ -16,8 +16,8 @@ from langchain.prompts import PromptTemplate
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 
-load_dotenv()  ## loading all the environment variables
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
+genai.configure(api_key=st.secrets['API_KEY'])
 
 ## function to load Gemini Pro model and get responses
 model = genai.GenerativeModel("gemini-pro")
