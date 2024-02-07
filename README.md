@@ -20,25 +20,37 @@ Dive into the cutting-edge world of conversational AI with my personal experimen
 
 > HOME
 
-[homepage](https://github.com/SilverStark18/amargptall/blob/main/ssagpt1.png)
+![homepage](https://github.com/SilverStark18/amargptall/blob/main/ssagpt1.png)
+
+---
 
 >Text Chat
 
-[textchat](https://github.com/SilverStark18/amargptall/blob/main/Textchat.png)
+![textchat](https://github.com/SilverStark18/amargptall/blob/main/Textchat.png)
+
+---
+
 
 >Image Chat
 
-[img chat](https://github.com/SilverStark18/amargptall/blob/main/imagechat.png)
+![img chat](https://github.com/SilverStark18/amargptall/blob/main/imagechat.png)
+
+---
 
 >PDF Chat
 
-[pdf chat](https://github.com/SilverStark18/amargptall/blob/main/pdf%20chat.png)
+![pdf chat](https://github.com/SilverStark18/amargptall/blob/main/pdf%20chat.png)
+
+---
 
 >Chat History
 
-[chat history](https://github.com/SilverStark18/amargptall/blob/main/chat%20history.png)
+![chat history](https://github.com/SilverStark18/amargptall/blob/main/chat%20history.png)
+
+---
 
 >credits
 
-[credits](https://github.com/SilverStark18/amargptall/blob/main/credits.png)
+![credits](https://github.com/SilverStark18/amargptall/blob/main/credits.png)
 
+---
