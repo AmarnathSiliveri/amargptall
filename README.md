@@ -16,3 +16,29 @@ Dive into the cutting-edge world of conversational AI with my personal experimen
 
 🟣 Explore other fascinating sections of the app, including 'Chat History' to reminisce about our previous interactions and 'Credits' to follow me on social
 
+***
+
+> HOME
+
+[homepage](https://github.com/SilverStark18/amargptall/blob/main/ssagpt1.png)
+
+>Text Chat
+
+[textchat](https://github.com/SilverStark18/amargptall/blob/main/Textchat.png)
+
+>Image Chat
+
+[img chat](https://github.com/SilverStark18/amargptall/blob/main/imagechat.png)
+
+>PDF Chat
+
+[pdf chat](https://github.com/SilverStark18/amargptall/blob/main/pdf%20chat.png)
+
+>Chat History
+
+[chat history](https://github.com/SilverStark18/amargptall/blob/main/chat%20history.png)
+
+>credits
+
+[credits](https://github.com/SilverStark18/amargptall/blob/main/credits.png)
+
