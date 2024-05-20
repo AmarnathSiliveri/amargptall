@@ -259,13 +259,12 @@ if selected == "PDF CHAT":
 
     # Define function to extract text from PDF
     def input_pdf_text(uploaded_file):
-        with open(uploaded_file, 'rb') as f:
-            reader = pdf.PdfReader(f)
+            reader = pdf.PdfReader(uploaded_file)
             text = ""
             for page in range(len(reader.pages)):
                 page = reader.pages[page]
                 text += str(page.extract_text())
-        return text
+            return text
 
     input_prompt = """
       Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
