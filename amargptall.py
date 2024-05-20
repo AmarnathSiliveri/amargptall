@@ -249,22 +249,25 @@ if selected == "IMAGE CHAT":
 
 if selected == "PDF CHAT":
     lottie_cpdf = load_lottiefiles(r"pdfparser.json")
-    st_lottie(lottie_cpdf, loop=True,quality="high", speed=1.25, key=None, height=350)
-            ##gemini  response
+    st_lottie(lottie_cpdf, loop=True, quality="high", speed=1.25, key=None, height=350)
+    
+    # Define function to get Gemini response
     def get_gemini_response(input):
-            model=genai.GenerativeModel('gemini-pro')
-            response=model.generate_content(input)
-            return response.text
+        model = genai.GenerativeModel('gemini-pro')
+        response = model.generate_content(input)
+        return response.text
 
+    # Define function to extract text from PDF
     def input_pdf_text(uploaded_file):
-            with open(uploaded_file, 'rb') as f:
-              reader = pdf.PdfReader(f)
-            text=""
+        with open(uploaded_file, 'rb') as f:
+            reader = pdf.PdfReader(f)
+            text = ""
             for page in range(len(reader.pages)):
-                page=reader.pages[page]
-                text+=str(page.extract_text())
-            return text
-    input_prompt="""
+                page = reader.pages[page]
+                text += str(page.extract_text())
+        return text
+
+    input_prompt = """
       Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
         provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
         Context:\n {text}?\n
@@ -273,23 +276,27 @@ if selected == "PDF CHAT":
         Answer:
     
         """
+    
     st.title("Chat with YOUR PDFS")
 
-    uploaded_file=st.file_uploader("Upload Your PDFS",type="pdf",help="please upload the pdf",accept_multiple_files=True)
-    st.session_state['pdf_srchistory'].append(("PDFS UPLOADED",uploaded_file))
-    user_question=st.text_input("HAVE a NICE chat with your PDFS")
+    uploaded_files = st.file_uploader("Upload Your PDFS", type="pdf", help="please upload the pdf", accept_multiple_files=True)
+    st.session_state['pdf_srchistory'].append(("PDFS UPLOADED", uploaded_files))
+    
+    user_question = st.text_input("HAVE a NICE chat with your PDFS")
     st.session_state["pdf_history"].append(("YOU", user_question))
+
     if st.button("submit"):
-            with st.spinner("Processing..."):
-                if uploaded_file is not None:
-                    text=input_pdf_text(uploaded_file)
-                    response=get_gemini_response(input_prompt)
-                    output_Text=response
+        with st.spinner("Processing..."):
+            if uploaded_files is not None:
+                for uploaded_file in uploaded_files:
+                    text = input_pdf_text(uploaded_file)
+                    response = get_gemini_response(text)  # Pass text instead of input_prompt
+                    output_Text = response
                     st.write(response)
                     st.balloons()
                     st.session_state["pdf_history"].append(("PDF_BOT", output_Text))
     st.warning("clear the cache at the top left side by clicking --->  ⋮  ")
-       
+   
 
 
 
