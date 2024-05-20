@@ -274,9 +274,9 @@ if selected == "PDF CHAT":
         """
     st.title("Chat with YOUR PDFS")
 
-    uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="please upload the pdf")
+    uploaded_file=st.file_uploader("Upload Your PDFS",type="pdf",help="please upload the pdf")
     st.session_state['pdf_srchistory'].append(("PDFS UPLOADED",uploaded_file))
-    user_question=st.text_area("Paste the job description 🎯🔍🌐")
+    user_question=st.text_input("HAVE a NICE chat with your PDFS")
     st.session_state["pdf_history"].append(("YOU", user_question))
     if st.button("submit"):
             with st.spinner("Processing..."):
