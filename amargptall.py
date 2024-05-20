@@ -257,7 +257,7 @@ if selected == "PDF CHAT":
             return response.text
 
     def input_pdf_text(uploaded_file):
-            with open(uploaded_file.name, 'rb') as f:
+            with open(uploaded_file, 'rb') as f:
               reader = pdf.PdfReader(f)
             text=""
             for page in range(len(reader.pages)):
