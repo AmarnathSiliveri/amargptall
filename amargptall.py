@@ -5,7 +5,7 @@ from streamlit_lottie import st_lottie
 import google.generativeai as genai
 from io import BytesIO
 import requests
-from PyPDF2 import pdf
+import PyPDF2 as pdf
 from PIL import Image
 
 
