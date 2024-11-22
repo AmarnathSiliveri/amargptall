@@ -13,7 +13,7 @@ from PIL import Image
 genai.configure(api_key=st.secrets['API_KEY'])
 
 ## function to load Gemini Pro model and get responses
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-1.5-flash")
 chat = model.start_chat(history=[])
 
 from streamlit_option_menu import option_menu
