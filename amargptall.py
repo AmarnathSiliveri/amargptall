@@ -13,7 +13,7 @@ from PIL import Image
 genai.configure(api_key=st.secrets['API_KEY'])
 
 ## function to load Gemini Pro model and get responses
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-1.5-pro")
 chat = model.start_chat(history=[])
 
 from streamlit_option_menu import option_menu
@@ -185,7 +185,7 @@ if selected == 'CHAT HISTORY':
         
 
 if selected == "IMAGE CHAT":
-    vision_model = genai.GenerativeModel('gemini-pro-vision')
+    vision_model = genai.GenerativeModel('gemini-1.5-flash')
     
     def vscontent(input_text_1, image):
         response = vision_model.generate_content([input_text_1, image], stream=True)
